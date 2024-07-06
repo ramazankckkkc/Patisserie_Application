@@ -1,5 +1,6 @@
 ﻿using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace DataAccess.Contexts
 {
@@ -10,8 +11,10 @@ namespace DataAccess.Contexts
         public DbSet<Sale> Sales { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<ProductSale> ProductSales { get; set; }
-
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(assembly: Assembly.GetExecutingAssembly());
+        }
 
     }
 }
