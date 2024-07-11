@@ -22,5 +22,11 @@ namespace DataAccess.Contexts
         {
             Configuration = configuration;
         }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            //if (!optionsBuilder.IsConfigured)
+            //    base.OnConfiguring(
+            //        optionsBuilder.UseSqlServer(Configuration.GetConnectionString("SomeConnectionString")));
+        }
     }
 }

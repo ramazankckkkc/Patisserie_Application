@@ -8,7 +8,12 @@ namespace DataAccess.EntityConfigurations
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(p => p.Id);
+            builder.HasIndex(p => p.Id);
+            builder.Property(p => p.Name).IsRequired();
+            builder.HasQueryFilter(p => p.IsDeleted);
+            builder.Property(x=>x.Price).IsRequired();
+            builder.HasOne(x => x.Category);
         }
     }
 }
